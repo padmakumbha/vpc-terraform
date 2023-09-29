@@ -7,10 +7,6 @@ resource "aws_vpc" "my_vpc" {
   }
 }
 
-data "aws_availability_zones" "available" {
-  state = "available"
-}
-
 #subnets
 resource "aws_subnet" "subnets" {
   count = length(var.subnet_cidr)
