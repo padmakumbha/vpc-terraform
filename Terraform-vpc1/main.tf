@@ -6,19 +6,19 @@ module "VPC" {
 
 module "SG" {
     source = "./modules/SG"
-    vpc_id = module.vpc.vpc_id
+    vpc_id = module.VPC.vpc_id
 }
 
 module "EC2" {
     source = "./modules/EC2"
     sg_id = module.SG.sg_id
-    subnets = module.vpc.subnet_ids
+    subnets = module.VPC.subnet_ids
 }
 
 module "ALB" {
     source = "./modules/ALB"
     sg_id = module.SG.sg_id
-    subnets = module.vpc.subnet_ids
-    vpc_id = module.vpc.vpc_id
+    subnets = module.VPC.subnet_ids
+    vpc_id = module.VPC.vpc_id
     Instance = module.EC2.Instance
 }
