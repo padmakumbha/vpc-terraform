@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
+                echo "Git committer email"
                 checkout scm
             }
         }
